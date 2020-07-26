@@ -81,6 +81,8 @@ spec:
               containerPort: 8080
             - name: https
               containerPort: 8443
+            - name: jnlp-port
+              containerPort: {{ .Values.jnlpPort }}
           {{- if .Values.livenessProbe.enabled }}
           livenessProbe:
             httpGet:

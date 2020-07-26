@@ -27,4 +27,8 @@ spec:
       {{- if and (or (eq .Values.service.type "NodePort") (eq .Values.service.type "LoadBalancer")) (not (empty .Values.service.nodePorts.https)) }}
       nodePort: {{ .Values.service.nodePorts.https }}
       {{- end }}
+    - name: jnlp-port
+      port: {{ .Values.jnlpPort }}
+      targetPort: {{ .Values.jnlpPort }}
+      protocol: TCP
   selector: {{- include "jenkins.matchLabels" . | nindent 4 }}
